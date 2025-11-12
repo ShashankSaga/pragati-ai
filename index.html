@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Internship Recommendation Engine | Smart India Hackathon</title>
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Pragati AI - Next-Generation Career Matching Platform">
+    <meta property="og:description" content="AI-Powered Internship Matching for the Future Workforce. Transform your career journey with intelligent recommendations.">
+    <meta property="og:image" content="https://i.postimg.cc/RCnFh7Xt/Untitled-design-10.png">
+    <meta property="og:image:alt" content="Pragati AI - Career Transformation Platform">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pragati AI">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pragati AI - Next-Generation Career Matching Platform">
+    <meta name="twitter:description" content="AI-Powered Internship Matching for the Future Workforce">
+    <meta name="twitter:image" content="https://i.postimg.cc/zvX0bbgW/Untitled-design-13.png">
+
+    <!-- Additional Meta Tags -->
+    <meta name="description" content="Transform your career journey with Pragati AI's intelligent internship matching platform. Developed for Smart India Hackathon 2025.">
+    <meta name="keywords" content="AI internship, career matching, Smart India Hackathon, job placement, artificial intelligence">
+    <meta name="author" content="Pragati AI Team">
+
+    <!-- Google Translate Widget -->
+    <meta name="google-translate-customization" content="">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages: 'hi,te,ta,bn,gu,kn,ml,mr,pa,ur',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background-pattern"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Left side: Hamburger + Logo -->
+                <div class="header-left">
+                    <button class="hamburger-menu" id="hamburgerBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <nav class="nav-menu" id="navMenu">
+                        <a href="#" onclick="showSection('studentPortal')">Student Portal</a>
+                        <a href="#" onclick="showSection('govDashboard')">Gov Dashboard</a>
+                        <a href="#" onclick="showSection('skillGapAnalysis')">Skill Gap Analysis</a>
+                    </nav>
+                    <div class="logo-section">
+                        <img src="https://i.postimg.cc/15bkQw9y/internship.png" alt="PM Internship Scheme Logo" class="logo">
+                    </div>
+                </div>
+
+                <!-- Center: Title -->
+                <div class="header-center">
+                    <div class="header-title">
+                        <h1>Pragati AI</h1>
+                        <p class="header-subtitle">Next-Generation Career Matching Platform</p>
+                    </div>
+                </div>
+
+                <!-- Right side: Google Translate -->
+                <div class="header-right">
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Government Dashboard Section -->
+    <section class="dashboard-section" id="govDashboard" style="display: none;">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Government Analytics Dashboard</h2>
+                <p class="dashboard-subtitle">Skills Demand & Market Trends Analysis</p>
+            </div>
+
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Trending Skills</h3>
+                    <div id="skillsTrendChart"></div>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Location Demand</h3>
+                    <div id="locationChart"></div>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Field Distribution</h3>
+                    <div id="fieldChart"></div>
+                </div>
+
+                <div class="analytics-card stats-overview">
+                    <h3>Platform Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalUsers">0</span>
+                            <span class="stat-label">Total Registrations</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalInternships">0</span>
+                            <span class="stat-label">Active Internships</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="successfulMatches">0</span>
+                            <span class="stat-label">Successful Matches</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="avgMatchScore">0%</span>
+                            <span class="stat-label">Avg Match Score</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Gap Analysis Section -->
+    <section class="skill-gap-section" id="skillGapAnalysis" style="display: none;">
+        <div class="container">
+            <div class="skill-gap-header">
+                <h2 class="skill-gap-title">Skill Gap Analysis</h2>
+                <p class="skill-gap-subtitle">Identify missing skills and get personalized learning recommendations</p>
+            </div>
+
+            <div class="analysis-form-section">
+                <form id="skillGapForm">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="targetField">Target Field</label>
+                            <select id="targetField" name="targetField" required>
+                                <option value="">Select Target Field</option>
+                                <option value="Technology">Technology & Software</option>
+                                <option value="Marketing">Digital Marketing</option>
+                                <option value="Finance">Finance & Investment</option>
+                                <option value="Healthcare">Healthcare & Life Sciences</option>
+                                <option value="Education">Education & EdTech</option>
+                                <option value="Design">Design & Creative</option>
+                                <option value="Data Science">Data Science & Analytics</option>
+                                <option value="Business Development">Business Development</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="currentSkills">Your Current Skills</label>
+                            <input type="text" id="currentSkills" name="currentSkills" placeholder="e.g., HTML, CSS, JavaScript, Python" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="experienceLevel">Experience Level</label>
+                            <select id="experienceLevel" name="experienceLevel" required>
+                                <option value="">Select Experience</option>
+                                <option value="Beginner">Beginner (0-1 years)</option>
+                                <option value="Intermediate">Intermediate (1-3 years)</option>
+                                <option value="Advanced">Advanced (3+ years)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Analyze Skill Gaps</button>
+                </form>
+            </div>
+
+            <div class="skill-gap-results" id="skillGapResults" style="display: none;">
+                <div class="analysis-grid">
+                    <div class="analysis-card skill-match-card">
+                        <h3>Skills You Have</h3>
+                        <div id="matchingSkills"></div>
+                    </div>
+
+                    <div class="analysis-card skill-gap-card">
+                        <h3>Missing Skills</h3>
+                        <div id="missingSkills"></div>
+                    </div>
+
+                    <div class="analysis-card learning-path-card">
+                        <h3>Recommended Learning Path</h3>
+                        <div id="learningPath"></div>
+                    </div>
+
+                    <div class="analysis-card market-demand-card">
+                        <h3>Market Demand Analysis</h3>
+                        <div id="marketDemand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Career Journey</h1>
+                <p class="hero-subtitle">AI-Powered Internship Matching for the Future Workforce</p>
+                <img src="https://i.postimg.cc/zvX0bbgW/Untitled-design-13.png" alt="AI Career Transformation" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="form-section">
+                <h2 class="form-title">Professional Profile Assessment</h2>
+                <form id="studentForm">
+                    <div class="form-grid">
+                        <div class="input-group" style="--delay: 0">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="input-group" style="--delay: 1">
+                            <label for="skills">Technical Skills</label>
+                            <input type="text" id="skills" name="skills" placeholder="JavaScript, Python, Machine Learning, etc." required>
+                        </div>
+                        <div class="input-group" style="--delay: 2">
+                            <label for="education">Education Level</label>
+                            <select id="education" name="education" required>
+                                <option value="">Select Education Level</option>
+                                <option value="High School">High School Graduate</option>
+                                <option value="Undergraduate">Undergraduate Student</option>
+                                <option value="Graduate">Graduate</option>
+                                <option value="Post Graduate">Post Graduate</option>
+                            </select>
+                        </div>
+                        <div class="input-group" style="--delay: 3">
+                            <label for="interest">Field of Interest</label>
+                            <select id="interest" name="interest" required>
+                                <option value="">Select Your Field</option>
+                                <option value="Technology">Technology & Software</option>
+                                <option value="Marketing">Digital Marketing</option>
+                                <option value="Finance">Finance & Investment</option>
+                                <option value="Healthcare">Healthcare & Life Sciences</option>
+                                <option value="Education">Education & EdTech</option>
+                                <option value="Design">Design & Creative</option>
+                                <option value="Data Science">Data Science & Analytics</option>
+                                <option value="Business Development">Business Development</option>
+                            </select>
+                        </div>
+                        <div class="input-group" style="--delay: 4">
+                            <label for="location">Preferred Location</label>
+                            <select id="location" name="location" required>
+                                <option value="">Choose Location</option>
+                                <option value="Mumbai">Mumbai</option>
+                                <option value="Delhi">Delhi NCR</option>
+                                <option value="Bangalore">Bangalore</option>
+                                <option value="Chennai">Chennai</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Pune">Pune</option>
+                                <option value="Kolkata">Kolkata</option>
+                                <option value="Remote">Remote Work</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Generate AI Recommendations</button>
+                </form>
+            </section>
+
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">AI is analyzing your profile and matching with opportunities...</p>
+            </div>
+
+            <section class="results-section" id="results">
+                <h2 class="results-title">Personalized Matchs</h2>
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How does our AI recommendation system work?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our current prototype utilizes advanced rule-based algorithms to match your skills, interests, and preferences with available internships. The system analyzes your profile data and calculates compatibility scores based on multiple factors including skill alignment, location preferences, and career interests.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What makes this platform unique for Smart India Hackathon?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This platform demonstrates innovative AI-powered career matching specifically designed for the Indian job market. It addresses the challenge of connecting students with relevant internship opportunities through intelligent algorithms, supporting the Digital India initiative and skill development programs.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are the future enhancements planned?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We plan to integrate cutting-edge technologies including NLP-based resume parsing, semantic similarity scoring through transformer networks, machine learning recommendation systems, behavioral pattern analysis, and deep learning models for predictive career trajectory algorithms.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How accurate are the matching results?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our current rule-based system provides match scores based on skill overlap and preference alignment. While this prototype demonstrates the concept effectively, the planned AI integration will significantly enhance accuracy through machine learning models trained on large datasets of successful internship placements.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is this platform scalable for national implementation?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, the platform architecture is designed for scalability. With proper infrastructure and AI model training, it can handle thousands of concurrent users and maintain a comprehensive database of internships across various industries and locations throughout India.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://i.postimg.cc/HnHrB2DP/Untitled-design-8.png" alt="PM Internship Scheme Footer Logo">
+                </div>
+                <div class="footer-title">AI InternMatch</div>
+                <p class="footer-subtitle">Empowering careers through intelligent matching</p>
+                <div class="copyright">
+                    <p>&copy; 2025 AI InternMatch Platform. Developed for Smart India Hackathon 2025. All rights reserved.</p>
+                    <p>Created with for Digital India Initiative | Connecting Talent with Opportunity</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Chatbot Widget -->
+    <div id="chatbot-container" class="chatbot-container">
+        <div id="chatbot-toggle" class="chatbot-toggle">
+            <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 2.98.97 4.29L1 23l6.71-1.97C9.02 21.64 10.46 22 12 22c5.52 0 10-4.48 10S17.52 2 12 2zm-1 17h-2v-2h2v2zm2.07-7.75l-.9.92C11.45 12.9 11 13.5 11 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H6c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+            </svg>
+        </div>
+
+        <div id="chatbot-window" class="chatbot-window">
+            <div class="chatbot-header">
+                <h4>🤖 Pragati AI Assistant</h4>
+                <button id="chatbot-close" class="chatbot-close">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="bot-message">
+                    Hi! I'm your AI-powered career assistant. I can help you with internship guidance, career advice, and answer any questions about your professional journey!
+                </div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Ask me about careers, internships, skills..." />
+                <button id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
